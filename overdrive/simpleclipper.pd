@@ -1,0 +1,116 @@
+#N canvas -9 -9 1920 1026 36;
+#X obj 549 10 adc~;
+#X obj 547 816 dac~;
+#X obj 548 751 *~;
+#X obj 35 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 35 533 metro 1 10 persec;
+#X obj 35 607 tabwrite~ array1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array1 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 28 53 graph;
+#X obj 697 672 hsl 128 50 0 1 0 0 empty empty empty -2 -8 0 10 -258113
+-1 -1 9400 1;
+#X obj 811 241 lop~ 10;
+#X floatatom 962 183 5 0 0 0 - - -;
+#X text 947 138 cutoff freq (hz);
+#X obj 35 657 tabwrite~ array2;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array2 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 251 55 graph;
+#X obj 548 641 +~;
+#X obj 914 320 hsl 128 15 0.01 1 1 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 4200 1;
+#X obj 35 709 tabwrite~ array3;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array3 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 29 226 graph;
+#X floatatom 1247 188 5 0 0 0 - - -;
+#X text 1232 143 cutoff freq (hz);
+#X obj 1096 246 hip~ 10;
+#X obj 548 701 +~;
+#X obj 1021 534 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -261234
+-1 -1 3700 1;
+#X obj 1108 534 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -261234
+-1 -1 12700 1;
+#X obj 1150 534 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -261234
+-1 -1 2700 1;
+#X obj 674 53 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 2200 1;
+#X floatatom 671 73 5 0 0 0 - - -;
+#X obj 864 287 hsl 128 15 1 250 1 0 empty empty empty -2 -8 0 10 -204786
+-1 -1 12700 1;
+#X obj 1150 296 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -204786
+-1 -1 7100 1;
+#X text 62 917 figure out how to overlay 2 things on one array to see
+input sig and output sig :);
+#X obj 1097 352 clipper;
+#X obj 1200 323 hsl 128 15 0.01 1 1 0 empty empty empty -2 -8 0 10
+-4034 -1 -1 1200 1;
+#X obj 811 354 clipper;
+#X obj 549 349 clipper;
+#X obj 652 321 hsl 128 15 0.01 1 1 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 5300 1;
+#X obj 602 288 hsl 128 15 1 250 1 0 empty empty empty -2 -8 0 10 -204786
+-1 -1 700 1;
+#X text 964 665 unfiltered;
+#X text 1099 665 lpf;
+#X text 1140 665 hpf;
+#X text 656 4 input multiplier;
+#X obj 549 128 *~;
+#X text 994 476 OUTPUT MIXER;
+#X text 1396 271 clip boundary;
+#X text 1396 301 input multiplier;
+#X obj 35 445 loadbang;
+#X text 678 724 master volume;
+#X connect 0 0 39 0;
+#X connect 0 1 39 0;
+#X connect 2 0 1 0;
+#X connect 2 0 1 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 11 0;
+#X connect 4 0 15 0;
+#X connect 7 0 2 1;
+#X connect 8 0 31 0;
+#X connect 9 0 8 1;
+#X connect 13 0 20 0;
+#X connect 14 0 31 2;
+#X connect 17 0 19 1;
+#X connect 19 0 29 0;
+#X connect 20 0 2 0;
+#X connect 21 0 32 3;
+#X connect 22 0 31 3;
+#X connect 23 0 29 3;
+#X connect 24 0 25 0;
+#X connect 25 0 39 1;
+#X connect 26 0 31 1;
+#X connect 27 0 29 1;
+#X connect 29 0 15 0;
+#X connect 29 0 20 1;
+#X connect 30 0 29 2;
+#X connect 31 0 13 1;
+#X connect 31 0 11 0;
+#X connect 32 0 5 0;
+#X connect 32 0 13 0;
+#X connect 33 0 32 2;
+#X connect 34 0 32 1;
+#X connect 39 0 8 0;
+#X connect 39 0 19 0;
+#X connect 39 0 32 0;
+#X connect 43 0 3 0;
